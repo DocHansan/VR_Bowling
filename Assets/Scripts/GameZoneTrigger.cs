@@ -11,7 +11,6 @@ public class GameZoneTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Ball")
         {
-            Debug.Log(other.gameObject);
             Recipient.GetComponent<GameController>().BeginGame();
         }
     }
