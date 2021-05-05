@@ -8,18 +8,26 @@ public class GameController : MonoBehaviour
     public GameObject Pins;
     public GameObject[] BallsPosition;
     public GameObject[] Balls;
+    public GameObject Recipient;
+    public int[] Throws = new int[21];
 
     private int _PlayerTry = 0;
     private bool _IsGameBegin = false;
     private float _timer = 0;
     private Vector3 _PinRotation;
     private int _DroppedPinsCount;
+    private int _Throw = -1;
 
     // Start is called before the first frame update
     void Start()
     {
         RespawnBalls();
         RespawnPins();
+
+        for (int i = 0; i < Throws.Length; i++)
+        {
+            Throws[i] = 0;
+        }
     }
 
     // Update is called once per frame
@@ -31,11 +39,19 @@ public class GameController : MonoBehaviour
             if (_timer >= 5f)
             {
                 _timer = 0;
-                Debug.Log(ÑheckDroppedPins());
                 RespawnBalls();
                 _IsGameBegin = false;
-                if (_PlayerTry == 2 || ÑheckDroppedPins() == 10)
+                ÑheckDroppedPins();
+                Throws[_Throw] = _DroppedPinsCount;
+                Recipient.GetComponent<ScoreDrawer>().UpdateThrows();
+                Recipient.GetComponent<ScoreDrawer>().UpdateFrames();
+
+                if (_PlayerTry == 2 || _DroppedPinsCount == 10)
                 {
+                    if (_PlayerTry == 1 && _Throw < 18)
+                    {
+                        _Throw += 1;
+                    }
                     RespawnPins();
                     _PlayerTry = 0;
                 }
@@ -49,8 +65,18 @@ public class GameController : MonoBehaviour
     //Calls when ball in trigger zone
     public void BeginGame()
     {
-        _PlayerTry += 1;
-        _IsGameBegin = true;
+        if (!_IsGameBegin && _Throw < 19)
+        {
+            _PlayerTry += 1;
+            _IsGameBegin = true;
+            _Throw += 1;
+        }
+        else if (_Throw == 19 && (Throws[18] == 10 || Throws[18] + Throws[19] == 10))
+        {
+            _PlayerTry += 1;
+            _IsGameBegin = true;
+            _Throw += 1;
+        }
     }
     
     void RespawnPins()
@@ -74,20 +100,24 @@ public class GameController : MonoBehaviour
         }
     }
 
-    int ÑheckDroppedPins()
+    void ÑheckDroppedPins()
     {
-        _DroppedPinsCount = -1;
+        _DroppedPinsCount = 0;
         foreach (GameObject Pins in GameObject.FindGameObjectsWithTag("Pin"))
         {
             foreach (Transform PinRotation in Pins.GetComponentsInChildren<Transform>())
             {
-                _PinRotation = PinRotation.rotation.eulerAngles;
-                if (_PinRotation[0] <= 250 || _PinRotation[0] >= 290)
+                if (PinRotation != Pins.GetComponentsInChildren<Transform>()[0])
                 {
-                    _DroppedPinsCount += 1;
+                    _PinRotation = PinRotation.rotation.eulerAngles;
+                    if (_PinRotation[0] <= 250 || _PinRotation[0] >= 290)
+                    {
+                        _DroppedPinsCount += 1;
+                        Destroy(PinRotation.gameObject);
+                    }
                 }
             }
         }
-        return _DroppedPinsCount;
     }
+
 }
