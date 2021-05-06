@@ -10,7 +10,7 @@ public class ScoreDrawer : MonoBehaviour
     public Text[] Throws;
     public GameObject Sender;
 
-    public int[] _Throws;
+    private int[] _Throws;
     private int _SumFrame = 0;
     private bool _IsStrike = false;
 
@@ -18,7 +18,7 @@ public class ScoreDrawer : MonoBehaviour
     void Start()
     {
         UpdateThrows();
-        UpdateFrames(); 
+        UpdateFrames();
     }
 
     public void UpdateThrows()
