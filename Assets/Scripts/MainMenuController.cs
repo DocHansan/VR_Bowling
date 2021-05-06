@@ -52,8 +52,6 @@ public class MainMenuController : MonoBehaviour
         {
             foreach (Transform PinOnScene in GameObject.FindGameObjectsWithTag("Pin")[1].GetComponentsInChildren<Transform>())
             {
-                Debug.Log("Try");
-                Debug.Log(SaveClass.DroppedPinsCount);
                 if (PinOnScene != GameObject.FindGameObjectsWithTag("Pin")[1].GetComponentsInChildren<Transform>()[0])
                 {
                     if (SaveClass.DroppedPinsCount != 0)
