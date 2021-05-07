@@ -5,11 +5,13 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
     public GameObject SaveObject;
     public GameObject SoundSource;
+    public Text SoundText;
 
     private AudioSource Sound;
     private bool IsNeedPlaySound = false;
@@ -92,12 +94,14 @@ public class MainMenuController : MonoBehaviour
             Sound.mute = !Sound.mute;
             //Sound.Stop();
             IsNeedPlaySound = true;
+            SoundText.text = "Sound Off";
         }
         else
         {
             Sound.mute = !Sound.mute;
             //Sound.Play();
             IsNeedPlaySound = false;
+            SoundText.text = "Sound On";
         }
     }
 
