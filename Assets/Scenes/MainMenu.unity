@@ -327,7 +327,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 78714559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1276394948}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ChangeSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &78714559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,7 +793,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1780932289}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -942,6 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveObject: {fileID: 0}
+  SoundSource: {fileID: 1780932288}
 --- !u!4 &1276394949
 Transform:
   m_ObjectHideFlags: 0
@@ -1081,6 +1094,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
+--- !u!1 &1780932288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8456715036385983711, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
+  m_PrefabInstance: {fileID: 1780932287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1780932289 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8456715036385983709, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
+  m_PrefabInstance: {fileID: 1780932287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2029903476
 GameObject:
   m_ObjectHideFlags: 0
