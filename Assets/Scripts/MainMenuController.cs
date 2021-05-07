@@ -100,4 +100,9 @@ public class MainMenuController : MonoBehaviour
             IsNeedPlaySound = false;
         }
     }
+
+    public void ReturnBalls()
+    {
+        SaveObject.GetComponent<GameController>().RespawnBalls();
+    }
 }
