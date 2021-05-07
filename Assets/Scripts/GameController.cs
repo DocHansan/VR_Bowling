@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
 
                 if (PlayerTry == 2 || DroppedPinsCount == 10)
                 {
-                    if (PlayerTry == 1 && Throw < 18)
+                    if (PlayerTry == 1 && Throw < Throws.Length - 3)
                     {
                         Throw += 1;
                     }
@@ -62,13 +62,13 @@ public class GameController : MonoBehaviour
     //Calls when ball in trigger zone
     public void BeginGame()
     {
-        if (!_IsGameBegin && Throw < 19)
+        if (!_IsGameBegin && Throw < Throws.Length - 2)
         {
             PlayerTry += 1;
             _IsGameBegin = true;
             Throw += 1;
         }
-        else if (Throw == 19 && (Throws[18] == 10 || Throws[18] + Throws[19] == 10))
+        else if (Throw == Throws.Length - 2 && (Throws[Throws.Length - 3] == 10 || Throws[Throws.Length - 3] + Throws[Throws.Length - 2] == 10))
         {
             PlayerTry += 1;
             _IsGameBegin = true;
