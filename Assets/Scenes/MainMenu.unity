@@ -915,7 +915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sound
+  m_Text: Sound On
 --- !u!222 &1269714128
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -954,7 +954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveObject: {fileID: 0}
-  SoundSource: {fileID: 1780932288}
+  SoundSource: {fileID: 2125141449}
+  SoundText: {fileID: 1269714127}
 --- !u!4 &1276394949
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,11 +1095,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
---- !u!1 &1780932288 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8456715036385983711, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
-  m_PrefabInstance: {fileID: 1780932287}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1780932289 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8456715036385983709, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
@@ -1197,3 +1193,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2125141449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4067531525840359801, guid: 4e8b8ec260a04a447a040811a7732129, type: 3}
+  m_PrefabInstance: {fileID: 1780932287}
+  m_PrefabAsset: {fileID: 0}
