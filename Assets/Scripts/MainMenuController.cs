@@ -9,6 +9,15 @@ using System.IO;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject SaveObject;
+    public GameObject SoundSource;
+
+    private AudioSource Sound;
+    private bool IsNeedPlaySound = false;
+
+    private void Start()
+    {
+        Sound = SoundSource.GetComponent<AudioSource>();
+    }
 
     public void LoadLevel(int level)
     {
@@ -64,7 +73,7 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private Save CreateSaveClass()
+    Save CreateSaveClass()
     {
         Save SaveClass = new Save();
 
@@ -74,5 +83,21 @@ public class MainMenuController : MonoBehaviour
         SaveClass.DroppedPinsCount = SaveObject.GetComponent<GameController>().DroppedPinsCount;
         
         return SaveClass;
+    }
+
+    public void ChangeSound()
+    {
+        if (!IsNeedPlaySound)
+        {
+            Sound.mute = !Sound.mute;
+            //Sound.Stop();
+            IsNeedPlaySound = true;
+        }
+        else
+        {
+            Sound.mute = !Sound.mute;
+            //Sound.Play();
+            IsNeedPlaySound = false;
+        }
     }
 }
